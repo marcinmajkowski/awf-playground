@@ -100,39 +100,40 @@
                                 </ul>
                             </div>
                         </fieldset>
-                        <!-- TODO div data-module age-input -->
-                        <fieldset class="m-form-row m-form-row--full-width" role="radiogroup">
-                            <span class="a-label"><legend>Wybierz sposób wprowadzania wieku</legend></span>
-                            <div class="m-form-row__content">
-                                <ul class="m-radio-group m-radio-group--2" data-module="m-radio-segmented">
-                                    <li class="m-radio-group__item">
-                                        <label class="a-radio" for="age-input-method-age">
-                                            <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-age" value="age" />
-                                            <span class="a-radio__label"><span class="a-radio__label-inner">Wiek</span></span>
-                                            <span class="a-radio__ui"></span>
-                                        </label>
-                                    </li>
-                                    <li class="m-radio-group__item">
-                                        <label class="a-radio" for="age-input-method-birthdate">
-                                            <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-birthdate" value="birthdate" />
-                                            <span class="a-radio__label"><span class="a-radio__label-inner">Data urodzenia</span></span>
-                                            <span class="a-radio__ui"></span>
-                                        </label>
-                                    </li>
-                                </ul>
+                        <div data-module="app/age-input">
+                            <fieldset class="m-form-row m-form-row--full-width" role="radiogroup">
+                                <span class="a-label"><legend>Wybierz sposób wprowadzania wieku</legend></span>
+                                <div class="m-form-row__content">
+                                    <ul class="m-radio-group m-radio-group--2" data-module="m-radio-segmented">
+                                        <li class="m-radio-group__item">
+                                            <label class="a-radio" for="age-input-method-age">
+                                                <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-age" value="age" />
+                                                <span class="a-radio__label"><span class="a-radio__label-inner">Wiek</span></span>
+                                                <span class="a-radio__ui"></span>
+                                            </label>
+                                        </li>
+                                        <li class="m-radio-group__item">
+                                            <label class="a-radio" for="age-input-method-birthdate">
+                                                <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-birthdate" value="birthdate" />
+                                                <span class="a-radio__label"><span class="a-radio__label-inner">Data urodzenia</span></span>
+                                                <span class="a-radio__ui"></span>
+                                            </label>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </fieldset>
+                            <div class="m-form-row m-form-row--full-width">
+                                <label class="a-label" for="age">Podaj wiek</label>
+                                <div class="m-form-row__content" data-module="a-plusminus">
+                                    <input type="number" id="age" name="age" class="a-textbox" value="18" min="1" max="999" />
+                                </div>
                             </div>
-                        </fieldset>
-                        <div class="m-form-row m-form-row--full-width">
-                            <label class="a-label" for="age">Podaj wiek</label>
-                            <div class="m-form-row__content" data-module="a-plusminus">
-                                <input type="number" id="age" name="age" class="a-textbox" value="18" min="1" max="999" />
-                            </div>
-                        </div>
-                        <div class="m-form-row m-form-row--full-width">
-                            <label class="a-label" for="birthdate">Podaj datę urodzenia</label>
-                            <div class="m-form-row__content">
-                                <!-- TODO min max value -->
-                                <input class="a-date" type="date" name="birthdate" placeholder="dd.mm.rrrr" id="birthdate" data-module="a-date" />
+                            <div class="m-form-row m-form-row--full-width">
+                                <label class="a-label" for="birthdate">Podaj datę urodzenia</label>
+                                <div class="m-form-row__content">
+                                    <!-- TODO min max value -->
+                                    <input class="a-date" type="date" name="birthdate" placeholder="dd.mm.rrrr" id="birthdate" data-module="a-date" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -141,6 +142,18 @@
         </div>
     </div>
 </div>
-<script async id="js-init" src="//cdn.aviva.com/static/core/v.3.2.0/js/init.js"></script>
+<!-- FIXME create this element dynamically with async attribute -->
+<script id="js-init" src="//cdn.aviva.com/static/core/v.3.2.0/js/init.js"></script>
+<script>
+    (function () {
+        'use strict';
+        var appUrl = location.pathname.replace('index.html', '') + 'js';
+
+        var initScript = document.getElementById('js-init');
+        initScript.setAttribute('data-app', appUrl);
+
+        require.paths.app = appUrl;
+    })();
+</script>
 </body>
 </html>
