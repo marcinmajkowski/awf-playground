@@ -142,17 +142,16 @@
         </div>
     </div>
 </div>
-<!-- FIXME create this element dynamically with async attribute -->
-<script id="js-init" src="//cdn.aviva.com/static/core/v.3.2.0/js/init.js"></script>
-<script>
+<script type="text/javascript">
     (function () {
         'use strict';
         var appUrl = location.pathname.replace('index.html', '') + 'js';
-
-        var initScript = document.getElementById('js-init');
-        initScript.setAttribute('data-app', appUrl);
-
-        require.paths.app = appUrl;
+        var script = document.createElement('script');
+        script.id = 'js-init';
+        script.src = '//cdn.aviva.com/static/core/v.3.2.0/js/init.js';
+        script.setAttribute('data-app', appUrl);
+        script.setAttribute('async', '');
+        document.body.appendChild(script);
     })();
 </script>
 </body>
