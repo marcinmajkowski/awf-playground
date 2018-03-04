@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-GB" class="no-js">
+<html lang="pl" class="no-js">
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -67,7 +67,79 @@
 <meta itemprop="name" content="[ Website name ]" />
 <meta itemprop="url" content="https://marcinmajkowski.com/awf-playground/]" />
 <div class="l-whole-page">
-    [ Insert modules / elements here ]
+    <div class="l-page-wrapper">
+        <div id="main" class="l-main-content" role="main">
+            <div class="l-section">
+                <div class="l-content-container">
+                    <div class="l-max l-max--6-column-medium l-max--6-column-large">
+                        <h1 class="a-heading a-heading--1 u-margin--top-none">Generator numerów PESEL</h1>
+                        <div class="m-form-row m-form-row--full-width">
+                            <label class="a-label" for="pesel">Wygenerowany numer PESEL</label>
+                            <div class="m-form-row__content">
+                                <input type="text" id="pesel" name="pesel" placeholder="PESEL" class="a-textbox a-textbox--11-character" />
+                            </div>
+                        </div>
+                        <fieldset class="m-form-row m-form-row--full-width" role="radiogroup">
+                            <span class="a-label"><legend>Wybierz płeć</legend></span>
+                            <div class="m-form-row__content">
+                                <ul class="m-radio-group m-radio-group--2" data-module="m-radio-segmented">
+                                    <li class="m-radio-group__item">
+                                        <label class="a-radio" for="sex-female">
+                                            <input class="a-radio__input" type="radio" name="sex" id="sex-female" value="female" />
+                                            <span class="a-radio__label"><span class="a-radio__label-inner">Kobieta</span></span>
+                                            <span class="a-radio__ui"></span>
+                                        </label>
+                                    </li>
+                                    <li class="m-radio-group__item">
+                                        <label class="a-radio" for="sex-male">
+                                            <input class="a-radio__input" type="radio" name="sex" id="sex-male" value="male" />
+                                            <span class="a-radio__label"><span class="a-radio__label-inner">Mężczyzna</span></span>
+                                            <span class="a-radio__ui"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                        <!-- TODO div data-module age-input -->
+                        <fieldset class="m-form-row m-form-row--full-width" role="radiogroup">
+                            <span class="a-label"><legend>Wybierz sposób wprowadzania wieku</legend></span>
+                            <div class="m-form-row__content">
+                                <ul class="m-radio-group m-radio-group--2" data-module="m-radio-segmented">
+                                    <li class="m-radio-group__item">
+                                        <label class="a-radio" for="age-input-method-age">
+                                            <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-age" value="age" />
+                                            <span class="a-radio__label"><span class="a-radio__label-inner">Wiek</span></span>
+                                            <span class="a-radio__ui"></span>
+                                        </label>
+                                    </li>
+                                    <li class="m-radio-group__item">
+                                        <label class="a-radio" for="age-input-method-birthdate">
+                                            <input class="a-radio__input" type="radio" name="age-input-method" id="age-input-method-birthdate" value="birthdate" />
+                                            <span class="a-radio__label"><span class="a-radio__label-inner">Data urodzenia</span></span>
+                                            <span class="a-radio__ui"></span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </fieldset>
+                        <div class="m-form-row m-form-row--full-width">
+                            <label class="a-label" for="age">Podaj wiek</label>
+                            <div class="m-form-row__content" data-module="a-plusminus">
+                                <input type="number" id="age" name="age" class="a-textbox" value="18" min="1" max="999" />
+                            </div>
+                        </div>
+                        <div class="m-form-row m-form-row--full-width">
+                            <label class="a-label" for="birthdate">Podaj datę urodzenia</label>
+                            <div class="m-form-row__content">
+                                <!-- TODO min max value -->
+                                <input class="a-date" type="date" name="birthdate" placeholder="dd.mm.rrrr" id="birthdate" data-module="a-date" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <script async id="js-init" src="//cdn.aviva.com/static/core/v.3.2.0/js/init.js"></script>
 </body>
