@@ -1,6 +1,8 @@
 define(['jquery', 'app/pesel-service'], function ($, peselService) {
     'use strict';
 
+    // TODO separate model, view and controller
+
     var peselGenerator = {
         init: function (el) {
             var $wrapper = $(el);
