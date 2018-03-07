@@ -17,7 +17,16 @@ define(['jquery', 'app/pesel-service'], function ($, peselService) {
                 $wrapper.$birthdateInput = $wrapper.find('input[name=birthdate]');
 
                 $wrapper
-                    .find(':input')
+                    .$peselInput
+                    .change(function () {
+                        that.updateForm($wrapper);
+                    });
+
+                $()
+                    .add($wrapper.$sexRadios)
+                    .add($wrapper.$ageInputMethodRadios)
+                    .add($wrapper.$ageInput)
+                    .add($wrapper.$birthdateInput)
                     .change(function () {
                         that.updatePesel($wrapper);
                     });
@@ -33,6 +42,16 @@ define(['jquery', 'app/pesel-service'], function ($, peselService) {
             var birthdate = ageInputMethod === 'birthdate' ? $wrapper.$birthdateInput.val() || null : null;
             var pesel = peselService.generate(sex, age, birthdate);
             $wrapper.$peselInput.val(pesel);
+        },
+
+        updateForm: function ($wrapper) {
+            var parsedPesel = peselService.parse($wrapper.$peselInput.val());
+            // FIXME awf expects radio to be checked only in UI
+            $wrapper.$sexRadios.each(function () {
+                var $radio = $(this);
+                $radio.prop('checked', $radio.val() === parsedPesel.sex);
+            });
+            // TODO set remaining controls
         }
     };
 
