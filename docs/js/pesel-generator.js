@@ -1,7 +1,84 @@
 define(['jquery', 'app/pesel-service'], function ($, peselService) {
     'use strict';
 
-    // TODO separate model, view and controller
+    var model = (function (peselService) {
+        var state = {
+            pesel: '',
+            sex: '',
+            ageInputMethod: '',
+            age: 18,
+            birthdate: ''
+        };
+
+        function getPesel() {
+            return state.pesel;
+        }
+
+        function setPesel(pesel) {
+            var parsedPesel = peselService.parse(pesel);
+            state.sex = parsedPesel.sex;
+            state.age = parsedPesel.age;
+            state.birthdate = parsedPesel.birthdate;
+        }
+
+        function generatePesel() {
+            var age = state.ageInputMethod === 'age' ? state.age : null;
+            var birthdate = state.ageInputMethod === 'birthdate' ? state.birthdate : null;
+            state.pesel = peselService.generate(state.sex, age, birthdate);
+        }
+
+        function getSex() {
+            return state.sex;
+        }
+
+        function setSex(sex) {
+            state.sex = sex;
+            generatePesel();
+        }
+
+        function getAgeInputMethod() {
+            return state.ageInputMethod;
+        }
+
+        function setAgeInputMethod(ageInputMethod) {
+            state.ageInputMethod = ageInputMethod;
+            generatePesel();
+        }
+
+        function getAge() {
+            return state.age;
+        }
+
+        function setAge(age) {
+            state.age = age;
+            generatePesel();
+        }
+
+        function getBirthdate() {
+            return state.birthdate;
+        }
+
+        function setBirthdate(birthdate) {
+            state.birthdate = birthdate;
+            generatePesel();
+        }
+
+        return {
+            getPesel: getPesel,
+            setPesel: setPesel,
+            generatePesel: generatePesel,
+            getSex: getSex,
+            setSex: setSex,
+            getAgeInputMethod: getAgeInputMethod,
+            setAgeInputMethod: setAgeInputMethod,
+            getAge: getAge,
+            setAge: setAge,
+            getBirthdate: getBirthdate,
+            setBirthdate: setBirthdate
+        };
+    })(peselService);
+
+    // TODO render model
 
     var peselGenerator = {
         init: function (el) {
